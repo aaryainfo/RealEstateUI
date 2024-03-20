@@ -49,13 +49,30 @@
 
         function showSlides() {
             let slides = document.querySelectorAll('.slide');
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.transform = `translateX(-${slideIndex * 100}%)`;
-            }
-            slideIndex++;
-            if (slideIndex >= slides.length) {
-                slideIndex = 0;
-            }
+            // for (let i = 0; i < slides.length; i++) {
+            //     slides[i].style.transform = `translateX(-${slideIndex * 100}%)`;
+            // }
+            // slideIndex++;
+            // if (slideIndex >= slides.length) {
+            //     slideIndex = 0;
+            // }
+            // Hide all slides
+    slides.forEach(slide => {
+        slide.style.opacity = 0;
+        slide.style.transition = 'opacity 1s ease';
+    });
+
+    // Show the current slide
+    slides[slideIndex].style.opacity = 1;
+
+    // Increment slideIndex
+    slideIndex++;
+
+    // Reset slideIndex if it exceeds the number of slides
+    if (slideIndex >= slides.length) {
+        slideIndex = 0;
+    }
+
             setTimeout(showSlides, 2000); // Change slide every 2 seconds
         }
         
